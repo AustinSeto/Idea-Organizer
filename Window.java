@@ -38,23 +38,16 @@ public class Window extends JFrame implements ActionListener {
             this.setBounds(0, 0, 1100, 50);
             this.setBackground(Color.GRAY);
             this.setFloatable(false);
+            SaveButton save_button = new SaveButton();
+            this.add(save_button);
+            OpenButton open_button = new OpenButton();
+            this.add(open_button);
+            DeleteAllButton delete_all = new DeleteAllButton();
+            this.add(delete_all);
             PrintObjectListButton list_button = new PrintObjectListButton();
-            list_button.setBounds(1000, 0, 100, 50);
             this.add(list_button);
         }
 
-        class PrintObjectListButton extends JButton {
-
-            PrintObjectListButton() {
-                super("Print Object List");
-                this.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        print_object_list();
-                    }
-                });
-            }
-        }
     }
 
     class BottomToolBar extends JToolBar {
@@ -82,6 +75,48 @@ public class Window extends JFrame implements ActionListener {
      */
     public void add_object(Idea new_idea) {
         object_list.add_object(new_idea);
+    }
+
+    class PrintObjectListButton extends JButton {
+
+        PrintObjectListButton() {
+            super("Print Object List");
+            this.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    print_object_list();
+                }
+            });
+        }
+    }
+
+    class SaveButton extends JButton {
+
+        SaveButton() {
+            super("Save");
+            // to be implemented
+        }
+    }
+
+    class OpenButton extends JButton {
+
+        OpenButton() {
+            super("Open");
+            // to be implemented
+        }
+    }
+
+    class DeleteAllButton extends JButton {
+
+        DeleteAllButton() {
+            super("Delete All");
+            this.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    object_list = new DrawnObjectList();
+                }
+            });
+        }
     }
 
     @Override
